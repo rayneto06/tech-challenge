@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: tech-challenge-fiap
+          image: andredegaspari/tech-challenge-fiap:beta-v8
+          ports:
+          - containerPort: 80
+          env:
+          - name: MONGO_URI
+            value: mongodb://admin:admin@mongo-db:27017/techchallenge?directConnection=true&authSource=admin&replicaSet=replicaset&retryWrites=true
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "1"
+              memory: "0.5Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app
+  labels:
+    app: node-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-app
+  ports:
+    - name: node-app
+      port: 3000
+      targetPort: 3000
+    - name: node-app-debugger
+      port: 3102
+      targetPort: 9229
