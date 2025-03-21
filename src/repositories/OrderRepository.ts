@@ -1,5 +1,5 @@
 import { OrderDTO } from '../domain/useCases/Order/OrderDTO';
-import { Order as OrderEntity, OrderStatus, PaymentStatus } from '../entities/order';
+import { Order as OrderEntity, OrderStatus, PaymentStatus } from '../domain/entities/order';
 import { IOrder } from '../interfaces/IOrder';
 import { Order } from '../interfaces/models/Order';
 import IOrderRepository from './interfaces/IOrderRepository';

@@ -1,7 +1,7 @@
 import { CustomerDTO } from "../domain/useCases/Customers/CustomerDTO";
 import ICustomerRepository from "./interfaces/ICustomerRepository";
 import { Customer } from '../interfaces/models/Customer';
-import { Customer as CustomerEntity } from '../entities/customer';
+import { Customer as CustomerEntity } from '../domain/entities/customer';
 
 class CustomerRepository implements ICustomerRepository {
 
