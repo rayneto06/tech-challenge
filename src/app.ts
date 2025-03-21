@@ -25,10 +25,10 @@ app.get('/', (_req: any, res: any) => {
     res.send('Heartbeat OK 💥');
 });
 
-app.use('/customers', customerRoutes);
-app.use('/products', productRoutes);
-app.use('/orders', orderRoutes);
-app.use('/mercadoPago', mercadoPagoRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/mercadoPago', mercadoPagoRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 

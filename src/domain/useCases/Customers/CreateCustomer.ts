@@ -1,4 +1,4 @@
-import { Customer } from '../../../entities/customer';
+import { Customer } from '../../entities/customer';
 import ICustomerRepository from '../../../repositories/interfaces/ICustomerRepository';
 import { CustomerDTO } from './CustomerDTO';
 

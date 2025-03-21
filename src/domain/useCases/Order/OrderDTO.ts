@@ -1,4 +1,4 @@
-import { Combo, OrderStatus, PaymentStatus } from "../../../entities/order";
+import { Combo, OrderStatus, PaymentStatus } from "../../entities/order";
 
 export interface OrderDTO {
     customerId?: string;

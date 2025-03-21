@@ -1,4 +1,4 @@
-import { OrderStatus, PaymentStatus } from "../../../entities/order";
+import { OrderStatus, PaymentStatus } from "../../entities/order";
 import { IExternalPaymentRepository } from "../../../repositories/interfaces/IExternalPaymentRepository";
 import IOrderRepository from "../../../repositories/interfaces/IOrderRepository";
 

@@ -4,7 +4,7 @@ import ViewOrder from '../../domain/useCases/Order/ViewOrder';
 import EditOrder from '../../domain/useCases/Order/EditOrder';
 import IOrderRepository from '../../repositories/interfaces/IOrderRepository';
 
-import { Combo, OrderStatus, PaymentStatus } from '../../entities/order';
+import { Order, OrderStatus, PaymentStatus, Combo } from '../../domain/entities/order';
 import { IExternalPaymentRepository } from '../../repositories/interfaces/IExternalPaymentRepository';
 
 export class OrderController {

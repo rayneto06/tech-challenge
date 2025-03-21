@@ -1,6 +1,5 @@
-import { Combo, Order, OrderStatus, PaymentStatus } from '../../../entities/order';
+import { Combo, Order, OrderStatus, PaymentStatus } from '../../entities/order';
 import IOrderRepository from '../../../repositories/interfaces/IOrderRepository';
-import { OrderDTO } from './OrderDTO';
 
 interface ICreateOrder {
     customerId: string;

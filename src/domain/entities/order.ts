@@ -1,4 +1,4 @@
-import { ICustomer } from "../interfaces/ICustomer";
+import { ICustomer } from '../../interfaces/ICustomer';
 
 export interface ProductDTO {
     category: ECategory;
