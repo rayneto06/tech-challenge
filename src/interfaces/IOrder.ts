@@ -1,4 +1,4 @@
-import { Combo, OrderStatus, PaymentStatus } from "../entities/order";
+import { Combo, OrderStatus, PaymentStatus } from "../domain/entities/order";
 import { ICustomer } from "./ICustomer";
 
 export interface IOrder {

@@ -48,7 +48,6 @@ interface OrderData {
     updatedAt: Date;
 }
 
-
 export class Order {
     readonly #_id;
     readonly #combo;
@@ -59,9 +58,8 @@ export class Order {
     readonly #createdAt;
     readonly #updatedAt;
 
-    
     constructor({ combo, status, _id, customer, createdAt, updatedAt, paymentStatus }: OrderData) {
-        this.#_id = _id
+        this.#_id = _id;
         this.#combo = combo;
         this.#total = this.calculateTotal();
         this.#status = status;
@@ -70,19 +68,21 @@ export class Order {
         this.#createdAt = createdAt;
         this.#updatedAt = updatedAt;
     }
+
     get _id(): string | undefined {
-        return this.#_id
+        return this.#_id;
     }
+
     get combo(): Combo {
-        return this.#combo
+        return this.#combo;
     }
 
     get total(): number {
-        return this.#total
+        return this.#total;
     }
 
     get status(): OrderStatus {
-        return this.#status
+        return this.#status;
     }
 
     get paymentStatus(): PaymentStatus {
@@ -90,15 +90,15 @@ export class Order {
     }
     
     get customer(): ICustomer | undefined {
-        return this.#customer
+        return this.#customer;
     }
 
     get createdAt(): Date {
-        return this.#createdAt
+        return this.#createdAt;
     }
        
     get updatedAt(): Date {
-        return this.#updatedAt
+        return this.#updatedAt;
     }
 
     calculateTotal(): number {
@@ -110,10 +110,14 @@ export class Order {
 
     mapPaymentStatusToOrderStatus(paymentStatus: string): { paymentOrderStatus: PaymentStatus, orderStatus: OrderStatus } | "UNKNOWN" {
         switch (paymentStatus) {
-            case 'approved': return ({ paymentOrderStatus: PaymentStatus.PAGO, orderStatus: OrderStatus.PREPARANDO });
-            case 'pending': return ({ paymentOrderStatus: PaymentStatus.PENDENTE, orderStatus: OrderStatus.RECEBIDO });
-            case 'rejected': return ({ paymentOrderStatus: PaymentStatus.CANCELADO, orderStatus: OrderStatus.FINALIZADO });
-            default: return 'UNKNOWN';
+            case 'approved':
+                return { paymentOrderStatus: PaymentStatus.PAGO, orderStatus: OrderStatus.PREPARANDO };
+            case 'pending':
+                return { paymentOrderStatus: PaymentStatus.PENDENTE, orderStatus: OrderStatus.RECEBIDO };
+            case 'rejected':
+                return { paymentOrderStatus: PaymentStatus.CANCELADO, orderStatus: OrderStatus.FINALIZADO };
+            default:
+                return 'UNKNOWN';
         }
     }
 }

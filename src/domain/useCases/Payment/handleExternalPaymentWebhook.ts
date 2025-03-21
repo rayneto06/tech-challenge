@@ -1,4 +1,4 @@
-import { OrderStatus, PaymentStatus } from "../../entities/order";
+import { Order, OrderStatus, PaymentStatus } from "../../entities/order";
 import { IExternalPaymentRepository } from "../../../repositories/interfaces/IExternalPaymentRepository";
 import IOrderRepository from "../../../repositories/interfaces/IOrderRepository";
 
@@ -21,12 +21,17 @@ export default class HandleExternalPaymentWebhook {
     private async updateOrderStatus(paymentDetails: any): Promise<void> {
         const orderId = paymentDetails.external_reference;
         const status = paymentDetails.status;
-        const order = await this.orderRepository.getOrderById(orderId);
+        const orderDTO = await this.orderRepository.getOrderById(orderId);
 
-        if(!order) throw new Error("Pedido não encontrado");
-        const mappedOrderStatus: 
-        { paymentOrderStatus: PaymentStatus, orderStatus: OrderStatus } | "UNKNOWN" =
-         order.mapPaymentStatusToOrderStatus(status)
+        if (!orderDTO) {
+            throw new Error("Pedido não encontrado");
+        }
+
+        // Instantiate the Order entity from the DTO
+        const orderEntity = new Order(orderDTO);
+        const mappedOrderStatus: { paymentOrderStatus: PaymentStatus, orderStatus: OrderStatus } | "UNKNOWN" =
+            orderEntity.mapPaymentStatusToOrderStatus(status);
+
         if (mappedOrderStatus === "UNKNOWN") {
             throw new Error("Status desconhecido");
         }

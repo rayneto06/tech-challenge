@@ -1,15 +1,15 @@
 import { OrderDTO } from '../../domain/useCases/Order/OrderDTO';
-import { Order, OrderStatus, PaymentStatus } from '../../entities/order';
+import { OrderStatus, PaymentStatus } from '../../domain/entities/order';
 
 interface IOrderRepository {
-    getAll(): Promise<Order[] | null>;
-    getAllActive(): Promise<Order[] | null>;
-    getOrderById(id: string): Promise<Order | null>;
+    getAllOrders(): Promise<OrderDTO[]>;
+    getAllActiveOrders(): Promise<OrderDTO[]>;
+    getOrderById(id: string): Promise<OrderDTO | null>;
     getOrderStatusById(id: string): Promise<OrderStatus | null>;
     getOrderPaymentStatusById(id: string): Promise<PaymentStatus | null>;
-    createOrder(order: OrderDTO): Promise<Order>;
-    updateOrder(id: string, order: Partial<OrderDTO>): Promise<Order | null>;
-    updateOrderStatus(id: string, status: { paymentStatus: PaymentStatus, status: OrderStatus }): Promise<Order | null>;
+    createOrder(order: OrderDTO): Promise<OrderDTO>;
+    updateOrder(id: string, order: Partial<OrderDTO>): Promise<OrderDTO | null>;
+    updateOrderStatus(id: string, status: { paymentStatus: PaymentStatus, status: OrderStatus }): Promise<OrderDTO | null>;
     deleteOrder(id: string): Promise<void>;
 }
 
