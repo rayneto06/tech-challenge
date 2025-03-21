@@ -21,7 +21,7 @@ class EditProduct {
             throw new Error('Product data must be an object');
         }
 
-        if (productData.category && !(productData.category in ECategory)) {
+        if (productData.category && !Object.values(ECategory).includes(productData.category as ECategory)) {
             throw new Error('Invalid category');
         }
 
